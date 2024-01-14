@@ -1,10 +1,9 @@
 import React from 'react';
 
 import {View, Text, Button, StyleSheet, Image, TextInput} from 'react-native';
-import MyComponent from './src/components/MyComponent';
-import CustomLabel from './src/components/CustomLabel';
+//import MyComponent from './src/components/MyComponent';
+//import CustomLabel from './src/components/CustomLabel';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-//import Icon from 'react-native-vector-icons/FontAwesome';
 import {Icon} from '@rneui/themed';
 
 function LoginField() {
@@ -13,50 +12,130 @@ function LoginField() {
       style={{
         marginTop: 100,
       }}>
-      <KeyboardAwareScrollView keyboardShouldPersistTaps={'never'}>
+      <View
+        style={{
+          backgroundColor: 'white',
+          borderRadius: 10,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginHorizontal: 20,
+          marginTop: 30,
+          height: 50,
+        }}>
+        <TextInput
+          style={{
+            height: 50,
+            width: '100%',
+            paddingLeft: 20,
+            fontSize: 20,
+          }}
+          placeholder="Your Email"
+          placeholderTextColor="black"
+        />
+      </View>
+      <View
+        style={{
+          backgroundColor: 'white',
+          borderRadius: 10,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginHorizontal: 20,
+          marginTop: 30,
+          height: 50,
+        }}>
+        <TextInput
+          style={{
+            height: 50,
+            width: '100%',
+            paddingLeft: 20,
+            fontSize: 20,
+          }}
+          placeholder="Password"
+          placeholderTextColor="black"
+        />
+      </View>
+      <SignButton />
+      <BottomSection />
+    </View>
+  );
+}
+
+function SignButton() {
+  return (
+    <View style={{flexDirection: 'row', marginTop: 15}}>
+      <View
+        style={{
+          flex: 1,
+          height: 70,
+          justifyContent: 'center',
+        }}>
+        <Text
+          style={{
+            color: 'black',
+            fontSize: 25,
+            fontWeight: 'bold',
+            marginLeft: 40,
+          }}>
+          Sign In
+        </Text>
+      </View>
+      <View style={{flex: 1, height: 70}}>
         <View
           style={{
-            backgroundColor: 'white',
-            borderRadius: 10,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginHorizontal: 20,
-            marginTop: 30,
+            width: 50,
             height: 50,
+            backgroundColor: 'white',
+            borderRadius: 25,
+            alignSelf: 'flex-end',
+            marginRight: 20,
+            marginBottom: 10,
+            justifyContent: 'center',
+            alignItems: 'center',
           }}>
-          <TextInput
-            style={{
-              height: 50,
-              width: '100%',
-              paddingLeft: 20,
-              fontSize: 20,
-            }}
-            placeholder="Your Email"
-            placeholderTextColor="black"
-          />
+          <Icon size={50} color="black" name="arrow-forward" type="ionican" />
         </View>
-        <View
+      </View>
+    </View>
+  );
+}
+
+function BottomSection() {
+  return (
+    <View style={{flexDirection: 'row', marginTop: 15}}>
+      <View
+        style={{
+          flex: 1,
+          height: 70,
+          justifyContent: 'center',
+        }}>
+        <Text
           style={{
-            backgroundColor: 'white',
-            borderRadius: 10,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginHorizontal: 20,
-            marginTop: 30,
-            height: 50,
+            color: 'black',
+            fontSize: 20,
+            fontWeight: 'bold',
+            marginLeft: 40,
           }}>
-          <TextInput
-            style={{
-              height: 50,
-              width: '100%',
-              paddingLeft: 20,
-              fontSize: 20,
-            }}
-            placeholder="Password"
-            placeholderTextColor="black"
-          />
-        </View>
-      </KeyboardAwareScrollView>
+          Sign Up
+        </Text>
+      </View>
+
+      <View
+        style={{
+          flex: 2,
+          height: 70,
+          justifyContent: 'center',
+        }}>
+        <Text
+          style={{
+            color: 'black',
+            fontSize: 20,
+            fontWeight: 'bold',
+            alignSelf: 'flex-end',
+            marginRight: 20,
+          }}>
+          Forget Password?
+        </Text>
+      </View>
     </View>
   );
 }
@@ -65,17 +144,23 @@ function App(): JSX.Element {
   return (
     // eslint-disable-next-line react-native/no-inline-styles
     <View style={sty.container}>
-      <Image
-        source={require('./assets/img/pexels-pixabay-235985.jpg')}
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-        }}
-      />
-      <Text style={sty.text}>{'Welcome\nBack'}</Text>
-      <Icon size={60} color="white" name="arrow-forward" type="ionican" />
-      <LoginField />
+      <KeyboardAwareScrollView
+        keyboardShouldPersistTaps={'never'}
+        style={{flex: 1, backgroundColor: 'transparent'}}>
+        <Image
+          source={require('./assets/img/pexels-pixabay-235985.jpg')}
+          style={{
+            position: 'absolute',
+            flex: 1,
+            width: '100%',
+            height: '100%',
+          }}
+        />
+
+        <Text style={sty.text}>{'Welcome\nBack'}</Text>
+
+        <LoginField />
+      </KeyboardAwareScrollView>
     </View>
   );
 }
